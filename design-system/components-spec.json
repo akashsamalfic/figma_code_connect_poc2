@@ -1,0 +1,46 @@
+{
+  "figma": {
+    "fileKey": "d3ax0NwPJeQ0IM7x2qfsWF",
+    "url": "https://www.figma.com/design/d3ax0NwPJeQ0IM7x2qfsWF/Code-Connect-POC--Copy-?node-id=1-1956",
+    "referenceSpec": "design-system/figma-file.json"
+  },
+  "componentSets": {
+    "Button": {
+      "properties": ["BtnType", "State", "Size", "Icon"],
+      "variants": {
+        "BtnType": ["PrimaryBtn", "SecondaryBtn"],
+        "State": ["Default"],
+        "Size": ["Small", "Medium"],
+        "Icon": ["None"]
+      },
+      "sizes": {
+        "Small": { "height": 35, "paddingX": 12, "radius": "2's/Full", "labelStyle": "Typography/Sbh3ExtraBold" },
+        "Medium": { "height": 40, "paddingX": 16, "radius": "2's/Full", "labelStyle": "Typography/Sbh3ExtraBold" }
+      },
+      "documentation": "https://docs.google.com/document/d/1XcMTNNEQLu2TMuAAja3mIS_JZGkFOVLk-ErP09J612s/edit"
+    },
+    "PatientDetailsBanner": {
+      "properties": ["Variant"],
+      "variants": { "Variant": ["Teal", "Gray"] },
+      "layout": { "width": 232, "radius": "Radius/RadiusInputFeild/RadiusInputFeild", "gap": 4 }
+    }
+  },
+  "components": {
+    "DropDown": { "height": 27, "radius": "Radius/RadiusInputFeild/RadiusInputFeild", "paddingX": 12 },
+    "Date Picker": {
+      "height": 27,
+      "note": "Import from MaximEyes Components or map to rds_DatePicker",
+      "documentation": "https://react.raaghu.ai/?path=/docs/elements-datepicker--docs"
+    },
+    "CountBadge": { "size": 18, "radius": "Radius/Full" },
+    "_QuickSearchQueue/State3": { "width": 232, "radius": 8, "textProperty": "queueLabel" },
+    "Table": { "existingNodeId": "1:1975", "action": "Rebind fills/strokes to MaximEyes — Colors variables" }
+  },
+  "layoutPatterns": {
+    "EncounterHxTab": {
+      "leftRail": { "outerPadding": 8, "panelWidth": 256, "panelRadius": "Radius/L" },
+      "main": { "paddingX": "V- Padding" },
+      "tableCard": { "padding": "Spacing", "radius": "2's/13" }
+    }
+  }
+}

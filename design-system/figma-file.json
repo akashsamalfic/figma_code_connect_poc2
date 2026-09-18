@@ -1,0 +1,20 @@
+{
+  "fileKey": "ikzzK2FEEsZJG3TmhcJ1mA",
+  "fileName": "Code-Connect-POC",
+  "team": "First Insight",
+  "libraryName": "Evaa Design System V.2 (Code Connect POC)",
+  "urls": {
+    "file": "https://www.figma.com/design/ikzzK2FEEsZJG3TmhcJ1mA/Code-Connect-POC",
+    "page": "https://www.figma.com/design/ikzzK2FEEsZJG3TmhcJ1mA/Code-Connect-POC?node-id=0-1",
+    "app": "https://www.figma.com/design/ikzzK2FEEsZJG3TmhcJ1mA/Code-Connect-POC?node-id=1-1956",
+    "devMode": "https://www.figma.com/design/ikzzK2FEEsZJG3TmhcJ1mA/Code-Connect-POC?node-id=0-1&p=f&m=dev"
+  },
+  "nodes": {
+    "pageAsc": "0:1",
+    "asc": "1:1954",
+    "app": "1:1956",
+    "simpleTableInstance": "22431:4486"
+  },
+  "codeConnectNodeMap": "design-system/evaa-code-connect-nodes.json",
+  "previousFileKeys": ["d3ax0NwPJeQ0IM7x2qfsWF", "nirO4BUezNVfYoFyLug4Sj"]
+}

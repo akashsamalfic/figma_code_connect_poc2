@@ -1,0 +1,16 @@
+{
+  "fileKey": "ikzzK2FEEsZJG3TmhcJ1mA",
+  "fileUrl": "https://www.figma.com/design/ikzzK2FEEsZJG3TmhcJ1mA/Code-Connect-POC",
+  "libraryName": "Evaa Design System V.2 (Code Connect POC)",
+  "components": {
+    "Button": { "nodeId": "22431:1308", "componentSetKey": "4d20474c951f707b687d7981ec285651a9fe382a" },
+    "PatientDetailsBanner": { "nodeId": "22431:1882", "componentSetKey": "bf2ab2e11825d78a42caff8f5fc355475c50c2ce" },
+    "DropDown": { "nodeId": "22445:651", "componentSetKey": "46c9c9c32d263fdbb8e33a6684655823b548bf94" },
+    "Date Picker": { "nodeId": "22431:2552", "componentSetKey": "3a42c4361df0e109be2ff3d5014633579002ad02" },
+    "CountBadge": { "nodeId": "22431:2694" },
+    "_QuickSearchQueue/State3": { "nodeId": "22431:2709" },
+    "Simple Table": { "nodeId": "22431:3751", "componentKey": "bb64874159b3094c176dc61b42d40f2408c72b90" },
+    "Left_QuickSearchPanel": { "nodeId": "22431:2723" },
+    "EHRNavBar": { "nodeId": "22431:3223" }
+  }
+}

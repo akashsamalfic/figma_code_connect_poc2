@@ -1,0 +1,20 @@
+{
+  "runId": "maximeyes-ds-2026-001",
+  "phase": "code-connect-ready-publish",
+  "fileKey": "ikzzK2FEEsZJG3TmhcJ1mA",
+  "figmaFile": "design-system/figma-file.json",
+  "figmaUrl": "https://www.figma.com/design/ikzzK2FEEsZJG3TmhcJ1mA/Code-Connect-POC?node-id=0-1&p=f&m=dev",
+  "codeConnectMappings": [
+    { "figma": "Button", "nodeId": "22431:1308", "source": "src/components/Button/Button.tsx" },
+    { "figma": "PatientDetailsBanner", "nodeId": "22431:1882", "source": "src/components/PatientDetailsBanner/PatientDetailsBanner.tsx" },
+    { "figma": "DropDown", "nodeId": "22445:651", "source": "src/components/DropDown/DropDown.tsx" },
+    { "figma": "Date Picker", "nodeId": "22431:2552", "source": "src/components/DatePicker/DatePicker.tsx" },
+    { "figma": "CountBadge", "nodeId": "22431:2694", "source": "src/components/CountBadge/CountBadge.tsx" },
+    { "figma": "_QuickSearchQueue/State3", "nodeId": "22431:2709", "source": "src/components/QuickSearchQueue/QuickSearchQueue.tsx" },
+    { "figma": "Simple Table", "nodeId": "22431:3751", "source": "src/components/Table/EncounterTable.tsx" },
+    { "figma": "Left_QuickSearchPanel", "nodeId": "22431:2723", "source": "src/components/LeftQuickSearchPanel/LeftQuickSearchPanel.tsx" },
+    { "figma": "EHRNavBar", "nodeId": "22431:3223", "source": "src/components/EHRNavBar/EHRNavBar.tsx" }
+  ],
+  "publishCommand": "npx figma connect publish -t %FIGMA_ACCESS_TOKEN%",
+  "blockers": ["FIGMA_ACCESS_TOKEN not set in environment for CLI publish"]
+}

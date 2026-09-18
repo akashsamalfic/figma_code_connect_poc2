@@ -13,5 +13,5 @@
     },
     "types": ["@figma/code-connect/figma-types"]
   },
-  "include": ["src/**/*", "vite.config.ts"]
+  "include": ["src/**/*"]
 }

@@ -51,6 +51,7 @@ MCP `get_code_connect_map` at page `0:1` returned empty (mappings live in publis
 | 1 | Button / DropDown | Icon-only `Alone` size; field labels on DropDown | Done |
 | 1 | ASCScreen | Compose mapped components + static mock data | Done |
 | 1 | Export | `src/index.ts` exports `ASCScreen` | Done |
+| 2 | Figma parity pass | MCP variables + assets; inline filters; nav/icons; interactions | Done |
 | 2 | Visual QA vs Figma | Layout, tokens, 7-row table, nav preset vs MCP screenshot | Done |
 | 2 | typecheck | `npm run typecheck` | Done |
 | 2 | lint/build | No ESLint/Vite in repo; typecheck only | Done (N/A build) |

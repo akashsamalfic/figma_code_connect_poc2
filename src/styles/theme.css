@@ -1,0 +1,43 @@
+:root {
+  --brand-canvas: #f6f6f1;
+  --color-panel-white: #ffffff;
+  --color-primary-btn-bkg: #118082;
+  --color-primary-btn-label: #ffffff;
+  --color-secondary-btn-border: #118082;
+  --color-secondary-btn-label: #4b4b4a;
+  --color-border-default: #c3c1b5;
+  --color-border-light: #e5e4dd;
+  --color-bkg-focus: #d6fffb;
+  --color-bkg-info50: #edf8ff;
+  --color-border-teal: #118082;
+  --color-label-default: #4b4b4a;
+  --color-txt-default: #303030;
+  --color-txt-section-header: #959490;
+  --color-placeholder: #71706c;
+  --color-nav-primary: #002515;
+  --color-nav-secondary: #325b04;
+  --color-nav-menu-selection: #325b04;
+  --color-nav-label: #ffffff;
+  --color-nav-icon-default: #ffffff;
+  --color-nav-border-divider: #71706c;
+  --color-nav-active-count: #e73d36;
+  --color-status-badge-bg: #2c3a4a;
+  --color-status-badge-text: #eef2f6;
+  --color-icon-success: #92d03d;
+  --color-icon-error: #e73d36;
+  --color-icon-mid-gray: #959490;
+  --color-icon-default-blue: #1a77b4;
+  --color-fill-disabled: #8ba1b9;
+  --color-link-teal: #118082;
+  --color-table-header-bg: #f6f6f1;
+  --radius-input: 13px;
+  --radius-panel: 12px;
+  --radius-pill: 999px;
+  --font-family: "DM Sans", sans-serif;
+  --line-height-body: 1.455;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-border-teal);
+  outline-offset: 2px;
+}

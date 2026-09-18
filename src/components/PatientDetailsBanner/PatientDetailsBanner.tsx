@@ -1,5 +1,7 @@
 import type { HTMLAttributes } from 'react'
 import { cssVars } from '@/tokens/cssVars'
+import { spacing } from '@/tokens/spacing'
+import { typography } from '@/tokens/typography'
 
 export type PatientBannerColor = 'Teal' | 'Gray'
 export type PatientBannerSize = 'Small' | 'Medium'
@@ -17,8 +19,8 @@ export type PatientDetailsBannerProps = {
   showSubtitle1?: boolean
   showSubtitle2?: boolean
   showSubtitle3?: boolean
-  showAge?: boolean
-  ageValue?: string
+  /** Figma panel format: `05/15/1985(38)` appended to DOB value. */
+  dobAgeSuffix?: string
   time?: boolean
   color?: PatientBannerColor
   size?: PatientBannerSize
@@ -37,8 +39,7 @@ export function PatientDetailsBanner({
   showSubtitle1 = true,
   showSubtitle2 = true,
   showSubtitle3 = true,
-  showAge = false,
-  ageValue = '',
+  dobAgeSuffix,
   color = 'Teal',
   size = 'Small',
   styleVariant = 'PatientDetails_WithoutOptionButton',
@@ -46,6 +47,8 @@ export function PatientDetailsBanner({
   ...rest
 }: PatientDetailsBannerProps) {
   const isTeal = color === 'Teal'
+  const isHovered = state === 'Hover'
+
   return (
     <div
       data-color={color}
@@ -54,47 +57,42 @@ export function PatientDetailsBanner({
       data-state={state}
       style={{
         width: '100%',
-        borderRadius: 13,
-        border: `1px solid ${isTeal ? cssVars.borderTeal : cssVars.borderDefault}`,
-        background: isTeal ? cssVars.bkgFocus : '#ffffff',
-        padding: '5px 9px',
+        borderRadius: spacing.inputRadius,
+        border: `${spacing.stroke1}px solid ${isTeal ? cssVars.borderTeal : cssVars.borderDefault}`,
+        background: isTeal ? cssVars.bkgFocus : cssVars.panelWhite,
+        padding: 9,
         display: 'flex',
         flexDirection: 'column',
-        gap: 4,
-        fontFamily: '"DM Sans", sans-serif',
+        gap: spacing.xs,
+        boxShadow: isHovered ? `0 0 0 1px ${cssVars.borderTeal}` : undefined,
       }}
       {...rest}
     >
-      <div style={{ fontSize: size === 'Small' ? 16 : 18, fontWeight: 600, color: cssVars.txtDefault }}>
+      <div style={size === 'Small' ? typography.sbh1ExtraBold : { ...typography.sbh1ExtraBold, fontSize: 20 }}>
         {headingText}
       </div>
       {showSubtitle1 && (
-        <div style={{ fontSize: 12, fontWeight: 500, color: cssVars.labelDefault }}>
-          {subtitle1}{' '}
-          <span style={{ color: cssVars.txtDefault }}>({subtitle1Value})</span>
-          {showAge && ageValue ? (
-            <>
-              {' '}
-              Age <span style={{ color: cssVars.txtDefault }}>({ageValue})</span>
-            </>
-          ) : null}
+        <div style={{ display: 'flex', gap: spacing.xs, ...typography.fs12Medium }}>
+          <span style={{ color: cssVars.labelDefault }}>{subtitle1}</span>
+          <span style={{ color: cssVars.txtDefault }}>
+            {subtitle1Value}
+            {dobAgeSuffix ?? ''}
+          </span>
         </div>
       )}
       {(showSubtitle2 || showSubtitle3) && (
-        <div style={{ display: 'flex', gap: 8, fontSize: 12, fontWeight: 500 }}>
+        <div style={{ display: 'flex', gap: spacing.sm, ...typography.fs12Medium }}>
           {showSubtitle2 && (
-            <span>
-              <span style={{ color: cssVars.labelDefault }}>{subtitle2}</span>{' '}
-              <span style={{ color: cssVars.txtDefault }}>
-                {subtitle2Value ? `(${subtitle2Value})` : subtitle2Value}
-              </span>
+            <span style={{ display: 'inline-flex', gap: spacing.xs }}>
+              <span style={{ color: cssVars.labelDefault }}>{subtitle2}</span>
+              <span style={{ color: cssVars.txtDefault }}>{subtitle2Value}</span>
             </span>
           )}
           {showSubtitle3 && (
-            <span>
-              <span style={{ color: cssVars.labelDefault }}>{subtitle3}</span>{' '}
-              <span style={{ color: cssVars.txtDefault }}>
-                {subtitle3Value ? `(${subtitle3Value})` : subtitle3Value}
+            <span style={{ display: 'inline-flex', gap: spacing.xs }}>
+              <span style={{ color: cssVars.labelDefault }}>{subtitle3}</span>
+              <span style={{ ...typography.fs12Regular, color: cssVars.txtDefault, fontWeight: 400 }}>
+                {subtitle3Value}
               </span>
             </span>
           )}

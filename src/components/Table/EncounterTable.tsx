@@ -1,5 +1,7 @@
 import type { CSSProperties, HTMLAttributes, ReactNode } from 'react'
+import { useState } from 'react'
 import { cssVars } from '@/tokens/cssVars'
+import { spacing } from '@/tokens/spacing'
 
 export type EncounterStatusIcon = 'success' | 'na' | 'error'
 
@@ -17,6 +19,7 @@ export type EncounterTableRow = {
 export type EncounterTableProps = {
   rows?: EncounterTableRow[]
   headerSlot?: ReactNode
+  onDeleteRow?: (encounterId: string) => void
 } & HTMLAttributes<HTMLDivElement>
 
 const defaultRows: EncounterTableRow[] = [
@@ -35,18 +38,32 @@ const defaultRows: EncounterTableRow[] = [
 const gridColumns =
   '32px 88px 104px minmax(140px, 1fr) 56px minmax(160px, 1.2fr) 52px 52px 72px 44px'
 
-function TableCheckbox() {
+function TableCheckbox({
+  checked,
+  onChange,
+  label,
+}: {
+  checked: boolean
+  onChange: () => void
+  label: string
+}) {
   return (
-    <span
-      role="presentation"
+    <button
+      type="button"
+      role="checkbox"
+      aria-checked={checked}
+      aria-label={label}
+      onClick={onChange}
       style={{
         display: 'inline-flex',
         width: 16,
         height: 16,
         borderRadius: 4,
-        border: `1px solid ${cssVars.borderDefault}`,
-        background: cssVars.panelWhite,
+        border: `${spacing.stroke1}px solid ${checked ? cssVars.borderTeal : cssVars.borderDefault}`,
+        background: checked ? cssVars.bkgFocus : cssVars.panelWhite,
         boxSizing: 'border-box',
+        padding: 0,
+        cursor: 'pointer',
       }}
     />
   )
@@ -125,7 +142,29 @@ const bodyCellStyle: CSSProperties = {
   lineHeight: 1.455,
 }
 
-export function EncounterTable({ rows = defaultRows, headerSlot, ...rest }: EncounterTableProps) {
+export function EncounterTable({
+  rows = defaultRows,
+  headerSlot,
+  onDeleteRow,
+  ...rest
+}: EncounterTableProps) {
+  const [selected, setSelected] = useState<Set<string>>(() => new Set())
+
+  const toggleRow = (id: string) => {
+    setSelected((prev) => {
+      const next = new Set(prev)
+      if (next.has(id)) next.delete(id)
+      else next.add(id)
+      return next
+    })
+  }
+
+  const allSelected = rows.length > 0 && rows.every((r) => selected.has(r.encounterId))
+
+  const toggleAll = () => {
+    setSelected(allSelected ? new Set() : new Set(rows.map((r) => r.encounterId)))
+  }
+
   const columnHeaders = [
     '',
     'Encounter ID',
@@ -167,7 +206,15 @@ export function EncounterTable({ rows = defaultRows, headerSlot, ...rest }: Enco
         >
           {columnHeaders.map((label, index) => (
             <span key={label || `col-${index}`} role="columnheader" style={headerCellStyle}>
-              {index === 0 ? <TableCheckbox /> : label}
+              {index === 0 ? (
+                <TableCheckbox
+                  checked={allSelected}
+                  onChange={toggleAll}
+                  label="Select all encounters"
+                />
+              ) : (
+                label
+              )}
             </span>
           ))}
         </div>
@@ -188,7 +235,11 @@ export function EncounterTable({ rows = defaultRows, headerSlot, ...rest }: Enco
               }}
             >
               <span role="cell">
-                <TableCheckbox />
+                <TableCheckbox
+                  checked={selected.has(row.encounterId)}
+                  onChange={() => toggleRow(row.encounterId)}
+                  label={`Select encounter ${row.encounterId}`}
+                />
               </span>
               <span
                 role="cell"
@@ -227,6 +278,7 @@ export function EncounterTable({ rows = defaultRows, headerSlot, ...rest }: Enco
                 <button
                   type="button"
                   aria-label={`Delete encounter ${row.encounterId}`}
+                  onClick={() => onDeleteRow?.(row.encounterId)}
                   style={{
                     border: 'none',
                     background: 'transparent',

@@ -1,13 +1,21 @@
-// url=https://www.figma.com/design/ikzzK2FEEsZJG3TmhcJ1mA/Code-Connect-POC?node-id=22431-2694
+// url=https://www.figma.com/design/HmB3F0SSVnRfiYfbNr2qrS?node-id=15864-642
 // source=src/components/CountBadge/CountBadge.tsx
 // component=CountBadge
-import figma from 'figma'
+import figma from "figma"
 
 const instance = figma.selectedInstance
-const type = instance.getEnum('Type', { Default: 'Default', Active: 'Active' })
-const countLayer = instance.findText('3', { traverseInstances: true })
+const type = instance.getEnum('Type', {
+  ActiveStatus: 'Active',
+  Default: 'Default',
+  New: 'Default',
+  NoticeStatus: 'Default',
+  Pending: 'Default',
+  Closed: 'Default',
+  Inactive: 'Default',
+})
+const countLayer = instance.findText('5', { traverseInstances: true })
 const count =
-  countLayer && 'textContent' in countLayer ? countLayer.textContent : '3'
+  countLayer.type === 'TEXT' ? countLayer.textContent : '5'
 
 export default {
   example: figma.code`<CountBadge type="${type}" count="${count}" />`,

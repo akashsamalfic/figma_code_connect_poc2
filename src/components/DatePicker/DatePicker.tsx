@@ -141,6 +141,7 @@ export function DatePicker({
             padding: 0,
             cursor: isDisabled ? 'not-allowed' : 'pointer',
             display: 'inline-flex',
+            flexShrink: 0,
           }}
         >
           <img src={figmaAssets.iconCalendar16} alt="" width={16} height={16} />

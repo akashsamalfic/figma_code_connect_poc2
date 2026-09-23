@@ -1,9 +1,7 @@
-// url=https://www.figma.com/design/ikzzK2FEEsZJG3TmhcJ1mA/Code-Connect-POC?node-id=22431-3751
+// url=https://www.figma.com/design/HmB3F0SSVnRfiYfbNr2qrS?node-id=18960-3816
 // source=src/components/Table/EncounterTable.tsx
 // component=EncounterTable
-import figma from 'figma'
-
-const instance = figma.selectedInstance
+import figma from "figma"
 
 export default {
   example: figma.code`<EncounterTable />`,

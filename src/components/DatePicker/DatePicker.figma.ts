@@ -1,7 +1,7 @@
-// url=https://www.figma.com/design/ikzzK2FEEsZJG3TmhcJ1mA/Code-Connect-POC?node-id=22431-2552
+// url=https://www.figma.com/design/HmB3F0SSVnRfiYfbNr2qrS?node-id=8965-4125
 // source=src/components/DatePicker/DatePicker.tsx
 // component=DatePicker
-import figma from 'figma'
+import figma from "figma"
 
 const instance = figma.selectedInstance
 
@@ -11,19 +11,23 @@ const showTitle = instance.getBoolean('Show Title')
 const isMandatory = instance.getBoolean('Is Mandatory')
 const state = instance.getEnum('State', {
   Default: 'Default',
-  Hover: 'Hover',
-  Disabled: 'Disabled',
-  Error: 'Error',
+  Expanded: 'Focus',
+  Selected: 'Default',
 })
-const type = instance.getEnum('Type', { Default: 'Default', Range: 'Range' })
+const type = instance.getEnum('Type', {
+  Default: 'Default',
+  Custom: 'Range',
+})
 const size = instance.getEnum('Size', { Small: 'Small', Medium: 'Medium' })
+// Omitted: Change Icon (INSTANCE_SWAP) and nested picker chrome.
+// DatePickerProps has no icon-node or calendar-panel slot.
 
 export default {
   example: figma.code`<DatePicker
   placeholderText="${placeholderText}"
   titleText="${titleText}"
-  showTitle={${showTitle}}
-  isMandatory={${isMandatory}}
+  ${showTitle ? 'showTitle' : ''}
+  ${isMandatory ? 'isMandatory' : ''}
   state="${state}"
   type="${type}"
   size="${size}"

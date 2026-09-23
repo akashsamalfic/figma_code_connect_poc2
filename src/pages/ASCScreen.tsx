@@ -10,6 +10,7 @@ import { LeftQuickSearchPanel } from '@/components/LeftQuickSearchPanel/LeftQuic
 import { PatientDetailsBanner } from '@/components/PatientDetailsBanner/PatientDetailsBanner'
 import { QuickSearchQueue } from '@/components/QuickSearchQueue/QuickSearchQueue'
 import { EncounterTable } from '@/components/Table/EncounterTable'
+import { IconPin, IconStar } from '@/icons/AscFilterIcons'
 import {
   ascEncounterRows,
   ascPatient,
@@ -146,7 +147,7 @@ export function ASCScreen() {
               <FilterFieldRow label="Enc Type">
                 <DropDown
                   layout="inline"
-                  controlWidth={218}
+                  controlWidth={141}
                   value={encType}
                   onChange={(e) => setEncType(e.target.value)}
                   options={[...encTypeOptions]}
@@ -164,12 +165,35 @@ export function ASCScreen() {
               <FilterFieldRow label="Provider">
                 <DropDown
                   layout="inline"
-                  controlWidth={218}
+                  controlWidth={141}
                   value={provider}
                   onChange={(e) => setProvider(e.target.value)}
                   options={[...providerOptions]}
                 />
               </FilterFieldRow>
+            </div>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: spacing.xs }}>
+              <span style={typography.sbh3ExtraBold}>Per Provider</span>
+              {ascProviderQueues.map((queue) => (
+                <QuickSearchQueue
+                  key={queue.queueLabel}
+                  queueLabel={queue.queueLabel}
+                  count={queue.count}
+                  selected={selectedQueue === queue.queueLabel}
+                  onClick={() => {
+                    setSelectedQueue(queue.queueLabel)
+                    const map: Record<string, string> = {
+                      'Mary Smith': 'MS',
+                      'Trevor Anderson': 'TDA',
+                      'Shandra C': 'SC',
+                    }
+                    const code = map[queue.queueLabel] ?? ''
+                    setProvider(code)
+                    setAppliedSummary(buildFilterSummary(encType, encDate, code))
+                  }}
+                />
+              ))}
             </div>
 
             <div
@@ -200,7 +224,7 @@ export function ASCScreen() {
                   label="Favorite filters"
                   pressed={favoriteFilters}
                   onClick={() => setFavoriteFilters((f) => !f)}
-                  iconNode={<img src={figmaAssets.iconStar16} alt="" width={16} height={16} />}
+                  iconNode={<IconStar />}
                 />
                 <Button
                   btnType="SecondaryBtn"
@@ -209,32 +233,9 @@ export function ASCScreen() {
                   label="Pin filters"
                   pressed={pinFilters}
                   onClick={() => setPinFilters((p) => !p)}
-                  iconNode={<img src={figmaAssets.iconPin16} alt="" width={16} height={16} />}
+                  iconNode={<IconPin />}
                 />
               </div>
-            </div>
-
-            <div style={{ display: 'flex', flexDirection: 'column', gap: spacing.xs }}>
-              <span style={typography.sbh3ExtraBold}>Per Provider</span>
-              {ascProviderQueues.map((queue) => (
-                <QuickSearchQueue
-                  key={queue.queueLabel}
-                  queueLabel={queue.queueLabel}
-                  count={queue.count}
-                  selected={selectedQueue === queue.queueLabel}
-                  onClick={() => {
-                    setSelectedQueue(queue.queueLabel)
-                    const map: Record<string, string> = {
-                      'Mary Smith': 'MS',
-                      'Trevor Anderson': 'TDA',
-                      'Shandra C': 'SC',
-                    }
-                    const code = map[queue.queueLabel] ?? ''
-                    setProvider(code)
-                    setAppliedSummary(buildFilterSummary(encType, encDate, code))
-                  }}
-                />
-              ))}
             </div>
           </LeftQuickSearchPanel>
         </div>

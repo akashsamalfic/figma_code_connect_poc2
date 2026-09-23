@@ -9,9 +9,5 @@
     "paths": {
       "@/components/*": ["src/components/*"]
     }
-  },
-  "documentUrlSubstitutions": {
-    "https://www.figma.com/design/d3ax0NwPJeQ0IM7x2qfsWF": "https://www.figma.com/design/ikzzK2FEEsZJG3TmhcJ1mA/Code-Connect-POC",
-    "https://www.figma.com/design/nirO4BUezNVfYoFyLug4Sj": "https://www.figma.com/design/ikzzK2FEEsZJG3TmhcJ1mA/Code-Connect-POC"
   }
 }

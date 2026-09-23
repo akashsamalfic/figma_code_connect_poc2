@@ -1,7 +1,7 @@
-// url=https://www.figma.com/design/ikzzK2FEEsZJG3TmhcJ1mA/Code-Connect-POC?node-id=22431-1882
+// url=https://www.figma.com/design/HmB3F0SSVnRfiYfbNr2qrS?node-id=12615-2790
 // source=src/components/PatientDetailsBanner/PatientDetailsBanner.tsx
 // component=PatientDetailsBanner
-import figma from 'figma'
+import figma from "figma"
 
 const instance = figma.selectedInstance
 
@@ -19,10 +19,15 @@ const time = instance.getBoolean('Time')
 const color = instance.getEnum('Color', { Teal: 'Teal', Gray: 'Gray' })
 const size = instance.getEnum('Size', { Small: 'Small', Medium: 'Medium' })
 const styleVariant = instance.getEnum('Style', {
+  PatientDetails: 'PatientDetails_WithOptionButton',
   PatientDetails_WithoutOptionButton: 'PatientDetails_WithoutOptionButton',
-  PatientDetails_WithOptionButton: 'PatientDetails_WithOptionButton',
 })
-const state = instance.getEnum('State', { Default: 'Default', Hover: 'Hover' })
+const state = instance.getEnum('State', {
+  Default: 'Default',
+  'Active/Selected/Hover': 'Hover',
+})
+// Nested Figma Button is encoded by styleVariant; PatientDetailsBannerProps
+// has no button or children slot.
 
 export default {
   example: figma.code`<PatientDetailsBanner

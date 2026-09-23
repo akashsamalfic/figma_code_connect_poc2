@@ -30,7 +30,9 @@ export function QuickSearchQueue({
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
-        width: 232,
+        width: '100%',
+        boxSizing: 'border-box',
+        minHeight: 32,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',

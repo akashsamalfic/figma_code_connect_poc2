@@ -20,6 +20,9 @@ export type ButtonProps = {
   children?: ReactNode
 } & Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'children'>
 
+/** Icons must keep their intrinsic size inside the fixed-width icon-only button. */
+const iconSlot: CSSProperties = { display: 'inline-flex', flexShrink: 0 }
+
 const sizeStyles: Record<BtnSize, { height: number; paddingX: number; fontSize: number }> = {
   Small: { height: 35, paddingX: 12, fontSize: 14 },
   Medium: { height: 40, paddingX: 16, fontSize: 14 },
@@ -112,11 +115,12 @@ export function Button({
         alignItems: 'center',
         justifyContent: 'center',
         gap: spacing.xs,
+        boxSizing: 'border-box',
         height: dims.height,
         width: isIconAlone ? dims.height : undefined,
         minWidth: isIconAlone ? dims.height : undefined,
-        paddingLeft: isIconAlone ? spacing.md + 1 : dims.paddingX,
-        paddingRight: isIconAlone ? spacing.md + 1 : dims.paddingX,
+        paddingLeft: isIconAlone ? 0 : dims.paddingX,
+        paddingRight: isIconAlone ? 0 : dims.paddingX,
         borderRadius: spacing.pillRadius,
         ...colors,
         ...typography.sbh3ExtraBold,
@@ -128,10 +132,11 @@ export function Button({
       }}
       {...rest}
     >
-      {icon === 'Leading' && iconNode}
+      {icon === 'Leading' && <span style={iconSlot}>{iconNode}</span>}
       {textContent}
-      {icon === 'Trailing' && iconNode}
-      {isIconAlone && (iconNode ?? textContent)}
+      {icon === 'Trailing' && <span style={iconSlot}>{iconNode}</span>}
+      {isIconAlone &&
+        (iconNode ? <span style={iconSlot}>{iconNode}</span> : textContent)}
     </button>
   )
 }

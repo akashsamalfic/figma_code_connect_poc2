@@ -55,11 +55,17 @@ export function LeftQuickSearchPanel({
             alignItems: 'center',
             justifyContent: 'center',
             cursor: 'pointer',
-            padding: 10,
+            padding: 0,
             boxSizing: 'border-box',
           }}
         >
-          <img src={figmaAssets.iconPanelBack16} alt="" width={16} height={16} />
+          <img
+            src={figmaAssets.iconPanelBack16}
+            alt=""
+            width={16}
+            height={16}
+            style={{ flexShrink: 0 }}
+          />
         </button>
       </aside>
     )
@@ -119,11 +125,17 @@ export function LeftQuickSearchPanel({
               alignItems: 'center',
               justifyContent: 'center',
               cursor: 'pointer',
-              padding: 10,
+              padding: 0,
               boxSizing: 'border-box',
             }}
           >
-            <img src={figmaAssets.iconPanelBack16} alt="" width={16} height={16} />
+            <img
+              src={figmaAssets.iconPanelBack16}
+              alt=""
+              width={16}
+              height={16}
+              style={{ flexShrink: 0 }}
+            />
           </button>
         </div>
       </header>

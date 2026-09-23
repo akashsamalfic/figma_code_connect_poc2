@@ -57,6 +57,7 @@ export function PatientDetailsBanner({
       data-state={state}
       style={{
         width: '100%',
+        boxSizing: 'border-box',
         borderRadius: spacing.inputRadius,
         border: `${spacing.stroke1}px solid ${isTeal ? cssVars.borderTeal : cssVars.borderDefault}`,
         background: isTeal ? cssVars.bkgFocus : cssVars.panelWhite,

@@ -27,27 +27,18 @@ const filterRows = instance.findConnectedInstances(
 )
 const filterRow0 = filterRows[0]
 const filterRow1 = filterRows[1]
+const filterRow2 = filterRows[2]
 let filterRow0Code
 let filterRow1Code
+let filterRow2Code
 if (filterRow0 && filterRow0.type === 'INSTANCE') {
   filterRow0Code = filterRow0.executeTemplate().example
 }
 if (filterRow1 && filterRow1.type === 'INSTANCE') {
   filterRow1Code = filterRow1.executeTemplate().example
 }
-
-const dropdowns = instance.findConnectedInstances(
-  (node) => node.codeConnectId() === 'dropdown',
-)
-const dropdown0 = dropdowns[0]
-const dropdown1 = dropdowns[1]
-let dropdown0Code
-let dropdown1Code
-if (dropdown0 && dropdown0.type === 'INSTANCE') {
-  dropdown0Code = dropdown0.executeTemplate().example
-}
-if (dropdown1 && dropdown1.type === 'INSTANCE') {
-  dropdown1Code = dropdown1.executeTemplate().example
+if (filterRow2 && filterRow2.type === 'INSTANCE') {
+  filterRow2Code = filterRow2.executeTemplate().example
 }
 
 const queues = instance.findConnectedInstances(
@@ -57,10 +48,45 @@ const queues = instance.findConnectedInstances(
   },
   { traverseInstances: true },
 )
-const queue = queues[0]
-let queueCode
-if (queue && queue.type === 'INSTANCE') {
-  queueCode = queue.executeTemplate().example
+const queue0 = queues[0]
+const queue1 = queues[1]
+const queue2 = queues[2]
+let queue0Code
+let queue1Code
+let queue2Code
+if (queue0 && queue0.type === 'INSTANCE') {
+  queue0Code = queue0.executeTemplate().example
+}
+if (queue1 && queue1.type === 'INSTANCE') {
+  queue1Code = queue1.executeTemplate().example
+}
+if (queue2 && queue2.type === 'INSTANCE') {
+  queue2Code = queue2.executeTemplate().example
+}
+
+const buttons = instance.findConnectedInstances(
+  (node) => node.codeConnectId() === 'button',
+  { traverseInstances: true },
+)
+const button0 = buttons[0]
+const button1 = buttons[1]
+const button2 = buttons[2]
+const button3 = buttons[3]
+let button0Code
+let button1Code
+let button2Code
+let button3Code
+if (button0 && button0.type === 'INSTANCE') {
+  button0Code = button0.executeTemplate().example
+}
+if (button1 && button1.type === 'INSTANCE') {
+  button1Code = button1.executeTemplate().example
+}
+if (button2 && button2.type === 'INSTANCE') {
+  button2Code = button2.executeTemplate().example
+}
+if (button3 && button3.type === 'INSTANCE') {
+  button3Code = button3.executeTemplate().example
 }
 
 export default {
@@ -68,9 +94,14 @@ export default {
   ${patientDetailsBannerCode}
   ${filterRow0Code}
   ${filterRow1Code}
-  ${dropdown0Code}
-  ${dropdown1Code}
-  ${queueCode}
+  ${filterRow2Code}
+  ${queue0Code}
+  ${queue1Code}
+  ${queue2Code}
+  ${button0Code}
+  ${button1Code}
+  ${button2Code}
+  ${button3Code}
 </LeftQuickSearchPanel>`,
   imports: ['import { LeftQuickSearchPanel } from "@/components/LeftQuickSearchPanel/LeftQuickSearchPanel"'],
   id: 'left-quick-search-panel',

@@ -6,45 +6,56 @@ import figma from "figma"
 const instance = figma.selectedInstance
 
 const label = instance.getString('Label')
-const btnType = instance.getEnum('BtnType', {
-  PrimaryBtn: 'PrimaryBtn',
-  SecondaryBtn: 'SecondaryBtn',
-  BrandBtn: 'PrimaryBtn',
-  SuccessBtn: 'PrimaryBtn',
-  DangerBtn: 'SecondaryBtn',
+
+const variant = instance.getEnum('BtnType', {
+  PrimaryBtn: 'primary',
+  SecondaryBtn: 'secondary',
+  BrandBtn: 'brand',
+  SuccessBtn: 'success',
+  DangerBtn: 'danger',
 })
-const state = instance.getEnum('State', {
-  Default: 'Default',
-  Hover: 'Hover',
-  Disable: 'Disabled',
+
+const disabled = instance.getEnum('State', {
+  Default: false,
+  Hover: false,
+  Disable: true,
 })
+
 const size = instance.getEnum('Size', {
-  Small: 'Small',
-  Medium: 'Medium',
-  Large: 'Medium',
-  True: 'Medium',
+  Large: 'lg',
+  Medium: 'md',
+  Small: 'sm',
+  True: 'md',
 })
-const icon = instance.getEnum('Icon', {
-  None: 'None',
-  LeftIcon: 'Leading',
-  RightIcon: 'Trailing',
-  Alone: 'Alone',
+
+const iconPlacement = instance.getEnum('Icon', {
+  None: 'none',
+  LeftIcon: 'left',
+  RightIcon: 'right',
+  Alone: 'alone',
 })
+
 const iconSwap = instance.getInstanceSwap('IconSwap')
 let iconCode
-if (iconSwap && iconSwap.type === 'INSTANCE') {
+if (iconPlacement !== 'none' && iconSwap && iconSwap.type === 'INSTANCE') {
   iconCode = iconSwap.executeTemplate().example
 }
 
+const disabledAttr = disabled ? figma.code` disabled` : figma.code``
+const leftIconAttr =
+  (iconPlacement === 'left' || iconPlacement === 'alone') && iconCode
+    ? figma.code` leftIcon={${iconCode}}`
+    : figma.code``
+const rightIconAttr =
+  iconPlacement === 'right' && iconCode
+    ? figma.code` rightIcon={${iconCode}}`
+    : figma.code``
+
 export default {
-  example: figma.code`<Button
-  btnType="${btnType}"
-  state="${state}"
-  size="${size}"
-  icon="${icon}"
-  label="${label}"
-  ${iconCode ? figma.code`iconNode={${iconCode}}` : ''}
-/>`,
+  example:
+    iconPlacement === 'alone'
+      ? figma.code`<Button variant="${variant}" size="${size}"${disabledAttr} aria-label="${label}"${leftIconAttr} />`
+      : figma.code`<Button variant="${variant}" size="${size}"${disabledAttr}${leftIconAttr}${rightIconAttr}>${label}</Button>`,
   imports: ['import { Button } from "@/components/Button/Button"'],
   id: 'button',
   metadata: { nestable: true },

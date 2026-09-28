@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from 'react'
+import { useCallback, useMemo, useState, type CSSProperties } from 'react'
 import { figmaAssets } from '@/assets/figma'
 import { Button } from '@/components/Button/Button'
 import { DatePicker } from '@/components/DatePicker/DatePicker'
@@ -47,6 +47,14 @@ function buildFilterSummary(encType: string, encDate: string, provider: string):
     : 'All'
   const range = encDate ? `${dateLabel} - ${dateLabel}` : '01/01/2016 - 11/18/2016'
   return `Enc Type: ${typeLabel}; Enc Date Range: ${range}; Provider: ${providerLabel}`
+}
+
+/** Figma Icon=Alone on Size=Small — square 35px control using the new Button API. */
+const iconAloneSm: CSSProperties = {
+  width: 35,
+  minWidth: 35,
+  paddingLeft: 0,
+  paddingRight: 0,
 }
 
 export function ASCScreen() {
@@ -207,33 +215,44 @@ export function ASCScreen() {
                 minHeight: 51,
               }}
             >
-              <Button btnType="PrimaryBtn" size="Small" label="GO" onClick={applyFilters} />
+              <Button type="button" variant="primary" size="sm" onClick={applyFilters}>
+                GO
+              </Button>
               <div style={{ display: 'flex', alignItems: 'center', gap: spacing.sm }}>
                 <Button
-                  btnType="SecondaryBtn"
-                  size="Small"
-                  icon="Alone"
-                  label="Clear filters"
+                  type="button"
+                  variant="secondary"
+                  size="sm"
+                  aria-label="Clear filters"
                   onClick={clearFilters}
-                  iconNode={<img src={figmaAssets.iconClear16} alt="" width={16} height={16} />}
+                  leftIcon={<img src={figmaAssets.iconClear16} alt="" width={16} height={16} />}
+                  style={iconAloneSm}
                 />
                 <Button
-                  btnType="SecondaryBtn"
-                  size="Small"
-                  icon="Alone"
-                  label="Favorite filters"
-                  pressed={favoriteFilters}
+                  type="button"
+                  variant="secondary"
+                  size="sm"
+                  aria-label="Favorite filters"
+                  aria-pressed={favoriteFilters}
                   onClick={() => setFavoriteFilters((f) => !f)}
-                  iconNode={<IconStar />}
+                  leftIcon={<IconStar />}
+                  style={{
+                    ...iconAloneSm,
+                    ...(favoriteFilters ? { background: cssVars.bkgFocus } : {}),
+                  }}
                 />
                 <Button
-                  btnType="SecondaryBtn"
-                  size="Small"
-                  icon="Alone"
-                  label="Pin filters"
-                  pressed={pinFilters}
+                  type="button"
+                  variant="secondary"
+                  size="sm"
+                  aria-label="Pin filters"
+                  aria-pressed={pinFilters}
                   onClick={() => setPinFilters((p) => !p)}
-                  iconNode={<IconPin />}
+                  leftIcon={<IconPin />}
+                  style={{
+                    ...iconAloneSm,
+                    ...(pinFilters ? { background: cssVars.bkgFocus } : {}),
+                  }}
                 />
               </div>
             </div>
@@ -259,8 +278,12 @@ export function ASCScreen() {
                 padding: `${spacing.fullPadding}px ${spacing.lg}px 0`,
               }}
             >
-              <Button btnType="SecondaryBtn" size="Small" label="View eHealth Info" />
-              <Button btnType="PrimaryBtn" size="Small" label="Add Encounter" />
+              <Button type="button" variant="secondary" size="sm">
+                View eHealth Info
+              </Button>
+              <Button type="button" variant="primary" size="sm">
+                Add Encounter
+              </Button>
             </div>
 
             <div

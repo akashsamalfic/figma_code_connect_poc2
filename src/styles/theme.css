@@ -35,6 +35,53 @@
   --radius-pill: 999px;
   --font-family: "DM Sans", sans-serif;
   --line-height-body: 1.455;
+
+  /* Button.css Figma token aliases (MaximEyes — Colors / Typography) */
+  --FontFamily-Family: var(--font-family);
+  --FontSize-Size-14: 14px;
+  --FontSize-Size-16: 16px;
+  --FontSize-Size-18: 18px;
+  --TypographyTypes-ButtonsTypography-Standard_Button-Family: var(--font-family);
+  --TypographyTypes-ButtonsTypography-Standard_Button-Size: 14px;
+  --TypographyTypes-ButtonsTypography-Standard_Button-Type: 800;
+
+  --colors-buttons-primary-btn-primary-btn-bkg-default: var(--color-primary-btn-bkg);
+  --colors-buttons-primary-btn-primary-btn-label-default: var(--color-primary-btn-label);
+  --colors-buttons-primary-btn-primary-btn-bkg-hover: #15a0a2;
+  --colors-buttons-primary-btn-primary-btn-label-hover: var(--color-primary-btn-label);
+  --colors-buttons-primary-btn-primary-btn-bkg-disabled: var(--color-fill-disabled);
+  --colors-buttons-primary-btn-primary-btn-label-disabled: var(--color-primary-btn-label);
+
+  --colors-buttons-secondary-btn-secondary-btn-bkg-default: var(--color-panel-white);
+  --colors-buttons-secondary-btn-secondary-btn-label-default: var(--color-secondary-btn-label);
+  --colors-buttons-secondary-btn-secondary-btn-border-default: var(--color-secondary-btn-border);
+  --colors-buttons-secondary-btn-secondary-btn-bkg-hover: var(--color-primary-btn-bkg);
+  --colors-buttons-secondary-btn-secondary-btn-label-hover: var(--color-primary-btn-label);
+  --colors-buttons-secondary-btn-secondary-btn-border-hover: var(--color-primary-btn-bkg);
+  --colors-buttons-secondary-btn-secondary-btn-bkg-disabled: var(--color-panel-white);
+  --colors-buttons-secondary-btn-secondary-btn-label-disabled: var(--color-placeholder);
+  --colors-buttons-secondary-btn-secondary-btn-border-disabled: var(--color-border-default);
+
+  --colors-buttons-brand-btn-brand-btn-bkg-default: var(--color-nav-secondary);
+  --colors-buttons-brand-btn-brand-btn-label-default: #ffffff;
+  --colors-buttons-brand-btn-brand-btn-bkg-hover: #3d7008;
+  --colors-buttons-brand-btn-brand-btn-label-hover: #ffffff;
+  --colors-buttons-brand-btn-brand-btn-bkg-disabled: var(--color-fill-disabled);
+  --colors-buttons-brand-btn-brand-btn-label-disabled: #ffffff;
+
+  --colors-buttons-success-btn-brand-btn-bkg-default: var(--color-icon-success);
+  --colors-buttons-success-btn-brand-btn-label-default: #ffffff;
+  --colors-buttons-success-btn-brand-btn-bkg-hover: #7eb834;
+  --colors-buttons-success-btn-brand-btn-label-hover: #ffffff;
+  --colors-buttons-success-btn-brand-btn-bkg-disabled: var(--color-fill-disabled);
+  --colors-buttons-success-btn-brand-btn-label-disabled: #ffffff;
+
+  --colors-buttons-danger-btn-danger-btn-bkg-default: var(--color-icon-error);
+  --colors-buttons-danger-btn-danger-btn-label-default: #ffffff;
+  --colors-buttons-danger-btn-danger-btn-bkg-hover: #c4322c;
+  --colors-buttons-danger-btn-danger-btn-label-hover: #ffffff;
+  --colors-buttons-danger-btn-danger-btn-bkg-disabled: var(--color-fill-disabled);
+  --colors-buttons-danger-btn-danger-btn-label-disabled: #ffffff;
 }
 
 :focus-visible {
